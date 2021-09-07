@@ -1,0 +1,15 @@
+@import "../../styles/helpers.scss";
+
+.introduction {
+  line-height: 1.3;
+  font-size: 1.3rem;
+
+  &Content {
+    text-align: center;
+  }
+
+  &Link {
+    @include inlineTextLinkStyle();
+    font-style: italic;
+  }
+}

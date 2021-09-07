@@ -1,0 +1,22 @@
+.grid {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 800px;
+  margin: 3rem auto 0;
+
+  .card {
+    margin: 1.5rem;
+    margin: 0 1.5rem 1.5rem 0;
+
+    &:nth-child(even) {
+      margin-right: 0;
+    }
+  }
+}
+
+@media (min-width: 600px) {
+  .grid {
+    flex-flow: row wrap;
+  }
+}

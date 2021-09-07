@@ -1,0 +1,118 @@
+@import "./base";
+
+@mixin linkFocusHoverBehavior {
+  @media (hover: hover) {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &:focus-visible {
+    text-decoration: underline;
+  }
+}
+
+@mixin linkStyle {
+  @include linkFocusHoverBehavior();
+  cursor: pointer;
+
+  &:active {
+    color: $black;
+  }
+}
+
+@mixin linkStyleDark {
+  @include linkFocusHoverBehavior();
+
+  &:active {
+    color: $ternaryColor;
+  }
+}
+
+@mixin inlineTextLinkStyle {
+  transition: transform 0.3s ease, background 0.4s ease;
+
+  &:link {
+    text-decoration: underline;
+  }
+
+  &:visited {
+    text-decoration: none;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      text-decoration: underline;
+      background: rgba(88, 89, 91, 0.2);
+    }
+  }
+
+  &:focus-visible {
+    text-decoration: underline;
+    background: rgba(88, 89, 91, 0.2);
+  }
+
+  &:active {
+    background: $gray15;
+    color: $ternaryColor;
+  }
+}
+
+@mixin buttonStyle {
+  background-color: $primaryColor;
+  border: 1px solid $secondaryColor;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  transition: transform 0.3s ease, background 0.4s ease, border-color 0.4s ease;
+
+  @media (hover: hover) {
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.125);
+      border-color: $ternaryColor;
+    }
+  }
+
+  &:focus-visible {
+    cursor: pointer;
+    transform: scale(1.125);
+    border-color: $ternaryColor;
+  }
+
+  &:active {
+    color: $secondaryColor;
+    background-color: #37474f;
+    border-color: $secondaryColor;
+    transform: scale(1);
+  }
+}
+
+@mixin headerStyle {
+  display: block;
+  margin: 0.25rem 0 0.5rem;
+}
+
+@mixin modalStyle {
+  position: absolute;
+  display: flex;
+  top: 20vh;
+  right: 20vw;
+  bottom: 20vh;
+  left: 20vw;
+  flex-direction: column;
+  justify-content: center;
+  background-color: $white;
+  outline: none;
+  padding: 5rem;
+}
+
+@mixin modalOverlayStyle {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(24.8, 24.8, 24.8, 0.8);
+}

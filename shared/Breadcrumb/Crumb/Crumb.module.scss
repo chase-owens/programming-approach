@@ -1,0 +1,15 @@
+@import "../../../styles/helpers.scss";
+
+.crumb {
+  line-height: 1.5rem;
+  color: $disabledGray;
+
+  &.isCompleted {
+    color: $black;
+  }
+}
+
+.checkmark {
+  color: $ternaryColor;
+  padding-left: 0.5rem;
+}

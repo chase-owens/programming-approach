@@ -1,0 +1,11 @@
+@import "../../styles/helpers.scss";
+
+.button {
+  @include buttonStyle();
+  display: inline-flex;
+  align-items: center;
+
+  &.strong {
+    font-weight: 600;
+  }
+}

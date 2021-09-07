@@ -1,0 +1,12 @@
+@import "../../../styles/helpers.scss";
+
+.container {
+  display: block;
+  margin-bottom: 2rem;
+  line-height: 1.3;
+  font-size: 1.3rem;
+}
+
+.heading {
+  @include headerStyle();
+}

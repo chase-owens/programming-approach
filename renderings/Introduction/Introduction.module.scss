@@ -1,0 +1,14 @@
+@import "../../styles/helpers.scss";
+
+.introduction {
+  line-height: 1.3;
+  font-size: 1.3rem;
+
+  &Highlight {
+    font-style: italic;
+  }
+
+  &Content {
+    margin-bottom: 2rem;
+  }
+}

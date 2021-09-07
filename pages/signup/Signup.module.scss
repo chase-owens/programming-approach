@@ -1,0 +1,19 @@
+@import "../../styles/helpers.scss";
+
+.container {
+  margin: 5rem;
+}
+
+.providerLoginName {
+  margin-right: 1rem;
+}
+
+.google {
+  background-color: blue;
+  color: $white;
+}
+
+.github {
+  background-color: $black;
+  color: $white;
+}

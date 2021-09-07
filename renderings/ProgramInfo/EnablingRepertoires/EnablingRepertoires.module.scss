@@ -1,0 +1,9 @@
+@import "../../../styles/helpers.scss";
+
+.container {
+  display: block;
+}
+
+.heading {
+  @include headerStyle();
+}
