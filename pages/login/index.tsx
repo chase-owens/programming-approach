@@ -1,8 +1,11 @@
 import { faGithub, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { TextField } from "@material-ui/core";
 import { useRouter } from "next/router";
 import { ChangeEvent, useEffect, useRef } from "react";
 import { useAuth } from "../../contexts/AuthContext/Provider";
+import Main from "../../layouts/Main";
+import getGoogleIcon from "../../public/icons";
 import Button from "../../shared/Button";
 import styles from "./Login.module.scss";
 
@@ -31,23 +34,42 @@ export default function Login() {
   };
 
   return (
-    <div className={styles.container}>
-      <span>login - here</span>
-      <form onSubmit={handleSubmit}>
-        <input ref={emailRef} type="text" />
-        <label>Email</label>
-        <input ref={passwordRef} type="text" />
-        <label>Password</label>
+    <Main heading="Log In">
+      <form className={styles.loginForm} onSubmit={handleSubmit}>
+        <TextField
+          id="email"
+          label="Email"
+          ref={emailRef}
+          type="email"
+          variant="outlined"
+        />
+        <TextField
+          id="password"
+          label="Password"
+          ref={passwordRef}
+          type="password"
+          variant="outlined"
+        />
         <Button type="submit">Submit</Button>
       </form>
-      <Button className={styles.google} onClick={loginWithGoogle}>
+      <Button
+        className={styles.google}
+        onClick={loginWithGoogle}
+        renderIcon={() => (
+          <span className={styles.icon} data-type="google">
+            {getGoogleIcon()}
+          </span>
+        )}
+      >
         <span className={styles.providerLoginName}>Sign in with Google</span>
-        <FontAwesomeIcon icon={faGoogle} />
       </Button>
-      <Button className={styles.github} onClick={loginWithGitHub}>
+      <Button
+        className={styles.github}
+        onClick={loginWithGitHub}
+        renderIcon={() => <FontAwesomeIcon icon={faGithub} />}
+      >
         <span className={styles.providerLoginName}>Sign in with GitHub</span>
-        <FontAwesomeIcon icon={faGithub} />
       </Button>
-    </div>
+    </Main>
   );
 }

@@ -8,6 +8,7 @@ interface ButtonProps {
   className?: string;
   isStrong?: boolean;
   onClick?: () => void;
+  renderIcon?: () => ReactNode;
   tabIndex?: number;
   to?: string;
   type?: "button" | "submit" | "reset";
@@ -18,6 +19,7 @@ export default function Button({
   className,
   onClick,
   isStrong,
+  renderIcon,
   tabIndex,
   to,
   type,
@@ -47,7 +49,8 @@ export default function Button({
       tabIndex={tabIndex}
       type={type}
     >
-      {children}
+      <span className={styles.text}>{children}</span>
+      {renderIcon && <span className={styles.icon}>{renderIcon()}</span>}
     </button>
   );
 }

@@ -58,11 +58,12 @@
   }
 }
 
-@mixin buttonStyle {
+@mixin buttonBase {
+  width: fit-content;
+  min-width: 120px;
   background-color: $primaryColor;
   border: 1px solid $secondaryColor;
   border-radius: 5px;
-  padding: 0.5rem 1rem;
   transition: transform 0.3s ease, background 0.4s ease, border-color 0.4s ease;
 
   @media (hover: hover) {
@@ -85,6 +86,15 @@
     border-color: $secondaryColor;
     transform: scale(1);
   }
+}
+
+@mixin buttonWithoutIconStyle {
+  @include buttonBase();
+  padding: 0.5rem 1rem;
+}
+
+@mixin buttonWithIconStyle {
+  @include buttonBase();
 }
 
 @mixin headerStyle {

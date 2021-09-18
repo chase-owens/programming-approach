@@ -1,11 +1,17 @@
 @import "../../styles/helpers.scss";
 
 .button {
-  @include buttonStyle();
+  @include buttonWithoutIconStyle();
   display: inline-flex;
   align-items: center;
+  justify-content: center;
 
   &.strong {
     font-weight: 600;
+  }
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
   }
 }

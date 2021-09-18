@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 import { ChangeEvent, useEffect, useRef } from "react";
 import { useAuth } from "../../contexts/AuthContext/Provider";
+import Main from "../../layouts/Main";
 import Button from "../../shared/Button";
 import styles from "./Signup.module.scss";
 
@@ -35,16 +36,15 @@ export default function Signup() {
   };
 
   return (
-    <div className={styles.container}>
+    <Main heading="Sign Up">
       <span>Sign up - here</span>
-      <form onSubmit={handleSubmit}>
+      <form className={styles.loginForm} onSubmit={handleSubmit}>
         <input ref={emailRef} type="text" />
         <label>Email</label>
         <input ref={passwordRef} type="text" />
         <label>Password</label>
         <Button type="submit">Submit</Button>
       </form>
-      <br />
       <Button className={styles.google} onClick={loginWithGoogle}>
         <span className={styles.providerLoginName}>Sign in with Google</span>
         <FontAwesomeIcon icon={faGoogle} />
@@ -53,6 +53,6 @@ export default function Signup() {
         <span className={styles.providerLoginName}>Sign in with GitHub</span>
         <FontAwesomeIcon icon={faGithub} />
       </Button>
-    </div>
+    </Main>
   );
 }
