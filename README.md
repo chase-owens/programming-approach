@@ -6,7 +6,7 @@ Next is a [React.js](https://reactjs.org) framework that comes with support for 
 
 Run the development server:
 
-npm run dev
+`npm run dev`
 
 ## About
 
