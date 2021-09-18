@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { ChangeEvent, useEffect, useRef } from "react";
 import { useAuth } from "../../contexts/AuthContext/Provider";
 import Main from "../../layouts/Main";
+import getGoogleIcon from "../../public/icons";
 import Button from "../../shared/Button";
 import styles from "./Signup.module.scss";
 
@@ -45,13 +46,23 @@ export default function Signup() {
         <label>Password</label>
         <Button type="submit">Submit</Button>
       </form>
-      <Button className={styles.google} onClick={loginWithGoogle}>
+      <Button
+        className={styles.google}
+        onClick={loginWithGoogle}
+        renderIcon={() => (
+          <span className={styles.icon} data-type="google">
+            {getGoogleIcon()}
+          </span>
+        )}
+      >
         <span className={styles.providerLoginName}>Sign in with Google</span>
-        <FontAwesomeIcon icon={faGoogle} />
       </Button>
-      <Button className={styles.github} onClick={loginWithGitHub}>
+      <Button
+        className={styles.github}
+        onClick={loginWithGitHub}
+        renderIcon={() => <FontAwesomeIcon icon={faGithub} />}
+      >
         <span className={styles.providerLoginName}>Sign in with GitHub</span>
-        <FontAwesomeIcon icon={faGithub} />
       </Button>
     </Main>
   );

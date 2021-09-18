@@ -6,8 +6,13 @@ export default function useFirebaseAuth() {
   const [isLoading, setIsLoading] = useState(true);
 
   const gitHubAuth = new firebase.auth.GithubAuthProvider();
-  gitHubAuth.addScope("repo");
+  gitHubAuth.addScope("user");
   const googleAuth = new firebase.auth.GoogleAuthProvider();
+
+  const providers = {
+    github: gitHubAuth,
+    google: googleAuth,
+  };
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((firebaseUser) => {
@@ -31,7 +36,21 @@ export default function useFirebaseAuth() {
   };
 
   const signInWithPopup = async (authProvider: firebase.auth.AuthProvider) =>
-    auth.signInWithPopup(authProvider);
+    auth.signInWithPopup(authProvider).catch((err) => {
+      if ((err.code = "auth/account-exists-with-different-credential")) {
+        firebase
+          .auth()
+          .fetchSignInMethodsForEmail(err.email)
+          .then((prevProviders) => {
+            const providerKey: "github" | "google" =
+              prevProviders[0].split(".")[0] === "google" ? "google" : "github";
+
+            window.confirm(
+              `You already have an account with ${providers[providerKey]} do you wish to continue with that account?`
+            ) && firebase.auth().signInWithRedirect(providers[providerKey]);
+          });
+      }
+    });
 
   const signInWithEmailAndPassword = async (
     email: string,
